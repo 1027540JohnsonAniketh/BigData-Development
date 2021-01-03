@@ -1,0 +1,230 @@
+1)SourceDesitnation:
+zip -d /home/aniketh/Desktop/FinalProjects/RealTimeAirportSystem/out/artifacts/RealTimeAirportSystem_jar/RealTimeAirportSystem.jar META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystem/out/artifacts/RealTimeAirportSystem_jar/RealTimeAirportSystem.jar MRCount /FlightDirectory /FlightDirectoryOutput/SourceDestination
+
+$hadoop fs -cat /FlightDirectoryOutput/SourceDestination/part-r-00000
+----------------------------------------------------------------------------------------------------------------------------------
+2)Top20SourceDestination:
+
+zip -d /home/aniketh/Desktop/FinalProjects/RealTImeAirportSystemTop20SourceDestination/out/artifacts/RealTImeAirportSystemTop20SourceDestination_jar/RealTImeAirportSystemTop20SourceDestination.jar META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTImeAirportSystemTop20SourceDestination/out/artifacts/RealTImeAirportSystemTop20SourceDestination_jar/RealTImeAirportSystemTop20SourceDestination.jar TopNMain /FlightDirectoryOutput/SourceDestination/part-r-00000 /FlightDirectoryOutput/Top20SourceDestination
+
+$hadoop fs -cat  /FlightDirectoryOutput/Top20SrcDest/part-r-00000
+
+$hadoop fs -tail /FlightDirectoryOutput/SrcDest/part-r-00000
+
+----------------------------------------------------------------------------------------------------------------------------------
+3)DelayedCount:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAIrportSystemDelayCount/out/artifacts/RealTimeAIrportSystemDelayCount_jar/RealTimeAIrportSystemDelayCount.jar META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAIrportSystemDelayCount/out/artifacts/RealTimeAIrportSystemDelayCount_jar/RealTimeAIrportSystemDelayCount.jar DelayedMain /FlightDirectory /FlightDirectoryOutput/DelayedCount
+
+$hadoop fs -cat /FlightDirectoryOutput/DelayedCount/part-r-00000
+
+----------------------------------------------------------------------------------------------------------------------------------
+4)UniqueCarrierCount:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemUniqueCarrierCount/out/artifacts/RealTimeAirportSystemUniqueCarrierCount_jar/RealTimeAirportSystemUniqueCarrierCount.jar META-INF/LICENSE
+
+$hadoop jar  /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemUniqueCarrierCount/out/artifacts/RealTimeAirportSystemUniqueCarrierCount_jar/RealTimeAirportSystemUniqueCarrierCount.jar CarrierMain /FlightDirectory /FlightDirectoryOutput/UniqueCarrierCount 
+
+ $hadoop fs  -cat  /FlightDirectoryOutput/UniqueCarrierCount/part-r-00000
+----------------------------------------------------------------------------------------------------------------------------------
+5)InnerJoinUniqueCarriersFullName:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin/out/artifacts/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin_jar/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin.jar META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin/out/artifacts/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin_jar/RealTimeAirportSystemGetFullCarrierNameUsingInnerJoin.jar FlightMain /FlightDirectory/carriers.csv /FlightDirectoryOutput/UniqueCarrierCount/part-r-00000 /FlightDirectoryOutput/UniqueCarrierFullNameInnerJoin 
+
+$hadoop fs -cat /FlightDirectoryOutput/UniqueCarrierFullNameInnerJoin/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+6)Flight Data Per Year:
+
+zip -d /home/aniketh/Desktop/FinalProjects/RealTimeAirportSystemFlightDataPerYear/out/artifacts/RealTimeAirportSystemFlightDataPerYear_jar/RealTimeAirportSystemFlightDataPerYear.jar  META-INF/LICENSE
+
+$hadoop jar  /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemFlightDataPerYear/out/artifacts/RealTimeAirportSystemFlightDataPerYear_jar/RealTimeAirportSystemFlightDataPerYear.jar MRCount /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/FlightDataPerYear
+
+$hadoop fs -cat /FlightDirectoryOutput/FlightDataPerYear/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+7)Delayed flights per year:
+
+zip -d /home/aniketh/Desktop/FinalProjects/RealTimeAirportSystemDelayedFlightsByYear/out/artifacts/RealTimeAirportSystemDelayedFlightsByYear_jar/RealTimeAirportSystemDelayedFlightsByYear.jar  META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemDelayedFlightsByYear/out/artifacts/RealTimeAirportSystemDelayedFlightsByYear_jar/RealTimeAirportSystemDelayedFlightsByYear.jar DelayedMain /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/DelayedFlightsPerYear 
+
+$hadoop fs -cat /FlightDirectoryOutput/DelayedFlightsPerYear/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+8)CancelledFlightsPerYear:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTImeAirportSystemCancelledFlightsPerYear/out/artifacts/RealTImeAirportSystemCancelledFlightsPerYear_jar/RealTImeAirportSystemCancelledFlightsPerYear.jar  META-INF/LICENSE
+
+$hadoop jar  /home/aniketh/Desktop/FinalProjects/Master/RealTImeAirportSystemCancelledFlightsPerYear/out/artifacts/RealTImeAirportSystemCancelledFlightsPerYear_jar/RealTImeAirportSystemCancelledFlightsPerYear.jar CancMain /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/CancelledFlightsPerYear 
+
+$hadoop fs -cat /FlightDirectoryOutput/CancelledFlightsPerYear/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+9)Ratio of delayed flights per year to total flights:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights/out/artifacts/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights_jar/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights.jar META-INF/LICENSE
+
+$hadoop jar  /home/aniketh/Desktop/FinalProjects/Master/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights/out/artifacts/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights_jar/RealTImeAirportSystemRatioOfDelayedFlightsPerTotalFlights.jar DelayYearMain  /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/RatioOfDelayedFlightsPerTotalFlightsPerYear 
+
+$hadoop fs -cat /FlightDirectoryOutput/RatioOfDelayedFlightsPerTotalFlightsPerYear/part-r-00000
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+10)Total flights by day of week and ratio to delayed:
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio/out/artifacts/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio_jar/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio.jar META-INF/LICENSE 	
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio/out/artifacts/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio_jar/RealTimeAirportSystemTotalFlightsByWeekAndDelayRatio.jar DelayDayMain  /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/TotalFlightsByDayOfWeekAndDelayedRatio 
+
+$hadoop fs -cat /FlightDirectoryOutput/TotalFlightsByDayOfWeekAndDelayedRatio/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+Total flights by months of year and ratio to delayed
+Skipped
+-------------------------------------------------------------------------------------------------------------------------------------------
+11)Total delayed flights by flight carriers and ratio of delayed flights
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio/out/artifacts/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio_jar/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio.jar META-INF/LICENSE 	
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio/out/artifacts/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio_jar/RealTimeAirportSystemFlightsDelayedByCarrierAndTheirRatio.jar DelayCarrierMain /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/TotalFlightsDelayedByCarrierNameAndTheRatio 
+
+$hadoop fs -cat /FlightDirectoryOutput/TotalFlightsDelayedByCarrierNameAndTheRatio/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+Total cancelled flights by flight carriers and ratio of cancelled flights
+Skipped
+-------------------------------------------------------------------------------------------------------------------------------------------
+12)Inverted index for all source and destination
+
+zip -d /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination/out/artifacts/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination_jar/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination.jar META-INF/LICENSE
+
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination/out/artifacts/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination_jar/RealTimeAirportSystemInvertedIndexForAllSourceAndDestination.jar IndexMain /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/InvertedIndexRealFlight
+
+$hadoop fs -cat /FlightDirectoryOutput/InvertedIndexRealFlight/part-r-00000
+-------------------------------------------------------------------------------------------------------------------------------------------
+13)Average flying distance per carrier
+
+zip -d //home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemAverageFlyingDistancePerCarrier/out/artifacts/RealTimeAirportSystemAverageFlyingDistancePerCarrier_jar/RealTimeAirportSystemAverageFlyingDistancePerCarrier.jar  META-INF/LICENSE
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/Master/RealTimeAirportSystemAverageFlyingDistancePerCarrier/out/artifacts/RealTimeAirportSystemAverageFlyingDistancePerCarrier_jar/RealTimeAirportSystemAverageFlyingDistancePerCarrier.jar AverageMain /FlightDirectory/712352293_T_ONTIME_REPORTING.csv /FlightDirectoryOutput/AverageFlyingDistancePerCarrier
+
+$hadoop fs -cat /FlightDirectoryOutput/AverageFlyingDistancePerCarrier/part-r-00000
+----------------------------------------------------------------------------------------------------------------------------------------------
+Using partitioning pattern on the basis of year
+
+zip -d  /home/aniketh/Desktop/FinalProjects/PartiotioningPattenBasedOnYear/out/artifacts/PartiotioningPattenBasedOnYear_jar/PartiotioningPattenBasedOnYear.jar META-INF/LICENSE
+
+$hadoop jar PartitionMain /home/aniketh/Desktop/FinalProjects/PartiotioningPattenBasedOnYear/out/artifacts/PartiotioningPattenBasedOnYear_jar/PartiotioningPattenBasedOnYear.jar /FlightDirectory /FlightDirectoryOutput/ParitioningByYear 
+------------------------------------------------------------------------------------------------------------------------------------
+
+Hive commands:
+
+create table flightdata(
+YEAR INT,
+MONTH INT,
+DAY_OF_MONTH INT,
+DAY_OF_WEEK INT,
+OP_UNIQUE_CARRIER STRING,
+TAIL_NUM STRING,
+OP_CARRIER_FL_NUM INT,
+ORIGIN STRING,
+DEST STRING,
+CRS_DEP_TIME INT,
+DEP_TIME INT,
+DEP_DELAY INT,
+TAXI_OUT INT,
+TAXI_IN INT,
+CRS_ARR_TIME INT,
+ARR_TIME INT,
+ARR_DELAY INT,
+CANCELLED INT,
+CANCELLATION_CODE STRING,
+DIVERTED STRING,
+CRS_ELAPSED_TIME INT,
+ACTUAL_ELAPSED_TIME INT,
+AIR_TIME INT,
+DISTANCE INT,
+CARRIER_DELAY INT,
+WEATHER_DELAY INT,
+NAS_DELAY INT,
+SECURITY_DELAY INT,
+LATE_AIRCRAFT_DELAY INT
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ;
+
+
+
+create table flightdata(YEAR INT,MONTH INT,DAY_OF_MONTH INT,DAY_OF_WEEK INT,OP_UNIQUE_CARRIER STRING,TAIL_NUM STRING,OP_CARRIER_FL_NUM INT,ORIGIN STRING,
+DEST STRING,CRS_DEP_TIME INT,DEP_TIME INT,DEP_DELAY INT,TAXI_OUT INT,TAXI_IN INT,CRS_ARR_TIME INT,ARR_TIME INT,ARR_DELAY INT,CANCELLED INT,CANCELLATION_CODE STRING,
+DIVERTED STRING,CRS_ELAPSED_TIME INT,ACTUAL_ELAPSED_TIME INT,AIR_TIME INT,DISTANCE INT,CARRIER_DELAY INT,WEATHER_DELAY INT,NAS_DELAY INT,SECURITY_DELAY INT,
+LATE_AIRCRAFT_DELAY INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ;
+
+
+SET hive.exec.dynamic.partition=true;
+SET hive.exec.dynamic.partition.mode=nostrict;
+
+LOAD DATA INPATH '/FlightDirectory/712352293_T_ONTIME_REPORTING.csv' OVERWRITE INTO TABLE flightdata;
+
+create table carriersdata(CODE STRING,DESCRIPTION STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ;
+LOAD DATA INPATH '/FlightDirectory/carriers.csv' OVERWRITE INTO TABLE flightdata;
+
+create table airportsdata(IATA STRING,AIRPORT STRING,CITY STRING,STATE STRING,COUNTRY STRING,LATITUDE STRING,LONGITUDE STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' ;
+
+LOAD DATA INPATH '/FlightDirectory/airports.csv' OVERWRITE INTO TABLE flightdata;
+
+
+------------------------------------------------------------------------------------------------------
+
+
+
+$hadoop jar /home/aniketh/Desktop/FinalProjects/MergeAllFlightFilesIntoSingleCSVFile/out/artifacts/MergeAllFlightFilesIntoSingleCSVFile_jar/MergeAllFlightFilesIntoSingleCSVFile.jar PutMerge /home/aniketh/Desktop/FlightDataLastFiveYearFiles /FlightSingleDirectory/FlightData.csv
+
+
+
+
+
+
+
+
+
+
+
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-mapreduce-client-core -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-core</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
